@@ -17,9 +17,9 @@ public class BidderService {
 	private EmailService emailService;
 	
 	public void register(Bidder bidder) {
-		if(dao.fetchById(Bidder.class, bidder.getEmailId())==null) {
+		if(dao.fetchById(Bidder.class, bidder.getId())==null) {
 			dao.save(bidder);
-			emailService.sendMailForNewBidderRegisteration(bidder);
+			//emailService.sendMailForNewBidderRegisteration(bidder);
 
 		}	
 	    else 

@@ -17,8 +17,7 @@ import com.lti.service.BidderService;
 public class BidderController {
 	
 	@Autowired
-	private BidderService bidderService;
-	
+	private BidderService bidderService;	
 	
 	@PostMapping(path = "/bidder-register")
 	public Status register(@RequestBody Bidder bidder) {
