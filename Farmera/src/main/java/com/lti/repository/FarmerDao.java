@@ -1,5 +1,8 @@
 package com.lti.repository;
 
-public class FarmerDao {
+
+public class FarmerDao extends GenericDaoImpl {
+	
+	
 
 }

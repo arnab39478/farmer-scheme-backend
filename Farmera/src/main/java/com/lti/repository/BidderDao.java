@@ -1,5 +1,5 @@
 package com.lti.repository;
 
-public class BidderDao {
+public class BidderDao extends GenericDaoImpl {
 
 }
