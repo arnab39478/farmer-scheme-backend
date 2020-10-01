@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.entity.Farmer;
 import com.lti.exception.FarmerServiceException;
+import com.lti.repository.GenericDao;
 import com.lti.repository.GenericDaoImpl;
 
 
@@ -12,15 +13,15 @@ import com.lti.repository.GenericDaoImpl;
 public class FarmerService {
 	
 	@Autowired
-	private GenericDaoImpl dao;
+	private GenericDao dao;
 	
 	@Autowired
 	private EmailService emailService;
 	
 	public void register(Farmer farmer) {
-		if(dao.fetchById(Farmer.class, farmer.getEmailId())==null) {
+		if(dao.fetchById(Farmer.class, farmer.getId())==null) {
 			dao.save(farmer);
-			emailService.sendMailForNewFarmerRegisteration(farmer);
+			//emailService.sendMailForNewFarmerRegisteration(farmer);
 			//then code to send an email to the farmer will be here
 		}	
 	    else 

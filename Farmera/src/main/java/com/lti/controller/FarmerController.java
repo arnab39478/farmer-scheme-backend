@@ -1,7 +1,8 @@
 package com.lti.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,8 @@ public class FarmerController {
 	@Autowired
 	private FarmerService farmerService;
 	
+	@Value("${upload.dir}")
+	private String uploadLocation;
 	
 	@PostMapping(path = "/farmer-register")
 	public Status register(@RequestBody Farmer farmer) {
@@ -34,6 +37,6 @@ public class FarmerController {
 			return status;
 		}
 	}
-	
+
 
 }

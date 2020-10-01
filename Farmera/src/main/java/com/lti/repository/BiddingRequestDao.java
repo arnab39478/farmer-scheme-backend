@@ -6,8 +6,8 @@ import com.lti.entity.BiddingRequest;
 
 public interface BiddingRequestDao {
 
-	List<BiddingRequest> fetchBiddingRequestsForFarmerSellRequest(String email);
+	List<BiddingRequest> fetchBiddingRequestsForFarmerSellRequest(int id);
 
-	List<BiddingRequest> fetchBiddingRequestByBidder(String email);
+	List<BiddingRequest> fetchBiddingRequestByBidder(int id);
 
 }
