@@ -31,7 +31,7 @@ public class BiddingRequest {
 	private SellRequest sellRequest;	
 
 	@Column(name="bid_amount")
-	private double amount;
+	private int amount;
 
 	@Column(name="Bid_Date")
 	private LocalDate bidDate;
@@ -54,7 +54,7 @@ public class BiddingRequest {
 		return sellRequest;
 	}
 
-	public double getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 
@@ -82,7 +82,7 @@ public class BiddingRequest {
 		this.sellRequest = sellRequest;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 

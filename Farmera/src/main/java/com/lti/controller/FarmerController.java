@@ -12,7 +12,6 @@ import com.lti.exception.FarmerServiceException;
 import com.lti.service.FarmerService;
 
 @RestController
-@CrossOrigin
 public class FarmerController {
 	
 	@Autowired
