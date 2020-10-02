@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.Status;
-import com.lti.entity.Farmer;
-import com.lti.exception.FarmerServiceException;
 import com.lti.service.BidderService;
 import com.lti.service.EmailService;
 import com.lti.service.FarmerService;

@@ -1,17 +1,18 @@
 package com.lti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.CropDetails;
 import com.lti.dto.Status;
-import com.lti.entity.SellRequest;
 import com.lti.exception.SellRequestServiceException;
 import com.lti.service.SellRequestService;
 
 @RestController
+@CrossOrigin
 public class SellRequestController {
 	
 	@Autowired

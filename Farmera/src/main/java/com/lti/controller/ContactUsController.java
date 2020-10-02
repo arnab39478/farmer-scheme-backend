@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.dto.Contact;
 import com.lti.dto.Status;
 import com.lti.service.EmailService;
-import com.lti.service.FarmerService;
 
 @RestController
 @CrossOrigin

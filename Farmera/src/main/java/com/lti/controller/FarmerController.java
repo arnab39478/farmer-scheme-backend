@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lti.dto.Login;
-import com.lti.dto.LoginStatus;
 import com.lti.dto.Status;
 import com.lti.entity.Farmer;
 import com.lti.exception.FarmerServiceException;
