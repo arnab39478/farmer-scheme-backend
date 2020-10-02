@@ -5,6 +5,15 @@ import org.springframework.stereotype.Component;
 @Component("bDao")
 public class BidderDao extends GenericDaoImpl {
 	
+	public boolean isBidderRegistered(String email) {
+		return (Long)
+				entityManager
+				.createQuery("select count(b.id) from Bidder b where b.emailId = :em")
+				.setParameter("em", email)
+				.getSingleResult() == 1 ? true : false;
+	} 
+	
+	
 	
 	public boolean isBidderPresent(String email, String password) {
 		return (Long)

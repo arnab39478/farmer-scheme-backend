@@ -19,11 +19,16 @@ public class FarmerService {
 	@Autowired
 	private EmailService emailService;
 	
+	public int checkForFarmer(String email) {
+		if(fDao.isFarmerRegistered(email)) 
+			return 1;
+		else return 0;	
+	}
+	
 	public int checkIfPresent(String email, String password) {
 		if(fDao.isFarmerPresent(email,password)) 
 			return 1;
-		else return 0;
-		
+		else return 0;	
 	}
 	
 	public void register(Farmer farmer) {

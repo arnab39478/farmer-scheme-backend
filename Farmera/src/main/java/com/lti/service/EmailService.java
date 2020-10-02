@@ -42,4 +42,13 @@ public class EmailService {
 		mailSender.send(message);
 	}
 	
+	public void sendResetLink(String email) {
+		SimpleMailMessage message=new SimpleMailMessage();
+		message.setFrom("mygladproject@outlook.com");
+		message.setTo(email);
+		message.setSubject("Link to reset your password");
+		message.setText("Reset your password by clicking HERE");
+		mailSender.send(message);
+	}
+	
 }

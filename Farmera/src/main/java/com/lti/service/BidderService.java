@@ -17,6 +17,12 @@ public class BidderService {
 	@Autowired
 	private EmailService emailService;
 	
+	public int checkForBidder(String email) {
+		if(bDao.isBidderRegistered(email)) 
+			return 1;
+		else return 0;	
+	}
+	
 	public int checkIfPresent(String email, String password) {
 		if(bDao.isBidderPresent(email,password)) 
 			return 1;
