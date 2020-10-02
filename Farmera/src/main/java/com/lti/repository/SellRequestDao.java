@@ -2,12 +2,23 @@ package com.lti.repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.lti.entity.SellRequest;
 
-public interface SellRequestDao {
+@Component("srdao")
+public class SellRequestDao extends GenericDaoImpl {
+	
+	public List<SellRequest> fetchSellRequestsByFarmer(String email){
 
-	List<SellRequest> fetchSellRequestsByFarmer(String email);
-
-	List<SellRequest> fetchSellRequestsBidByBidder(String email);
+		String jpql="select sr from SellRequest sr join sr.farmer f where f.emailId=:em";
+		return entityManager.createQuery(jpql).setParameter("em", email).getResultList();
+	}
+	
+	public List<SellRequest> fetchSellRequestsBidByBidder(String email){
+		
+		String jpql="select sr from SellRequest sr join sr.biddingRequest br where br.bidder.emailId=:em";
+		return entityManager.createQuery(jpql).setParameter("em", email).getResultList();
+	}
 
 }

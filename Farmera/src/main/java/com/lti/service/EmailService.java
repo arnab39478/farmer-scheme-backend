@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.entity.Bidder;
 import com.lti.entity.Farmer;
+import com.lti.entity.SellRequest;
 
 @Service
 public class EmailService {
@@ -18,7 +19,7 @@ public class EmailService {
 		SimpleMailMessage message=new SimpleMailMessage();
 		message.setFrom("mygladproject@outlook.com");
 		message.setTo(farmer.getEmailId());
-		message.setSubject("Thank You for Registering with Us!");
+		message.setSubject("Registration complete!");
 		message.setText("Greetings "+farmer.getFullName());
 		mailSender.send(message);
 	}
@@ -27,8 +28,17 @@ public class EmailService {
 		SimpleMailMessage message=new SimpleMailMessage();
 		message.setFrom("mygladproject@outlook.com");
 		message.setTo(bidder.getEmailId());
-		message.setSubject("Thank You for Registering with Us!");
+		message.setSubject("Registration complete!");
 		message.setText("Greetings "+bidder.getFullName());
+		mailSender.send(message);
+	}
+	
+	public void sendMailForCropSellRequest(SellRequest request) {
+		SimpleMailMessage message=new SimpleMailMessage();
+		message.setFrom("mygladproject@outlook.com");
+		message.setTo(request.getFarmer().getEmailId());
+		message.setSubject("Request placed!");
+		message.setText("Thank You for placing your request!");
 		mailSender.send(message);
 	}
 	
