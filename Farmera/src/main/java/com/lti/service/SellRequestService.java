@@ -39,7 +39,7 @@ public class SellRequestService {
 		sellRequest.setApprovedStatus('Y');
 		
 		srDao.save(sellRequest);
-		emailService.sendMailForCropSellRequest(sellRequest);
+		//emailService.sendMailForCropSellRequest(sellRequest);
 	}
 
 }
