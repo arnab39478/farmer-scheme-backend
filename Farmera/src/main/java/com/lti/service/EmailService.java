@@ -50,5 +50,15 @@ public class EmailService {
 		message.setText("Reset your password by clicking HERE");
 		mailSender.send(message);
 	}
+
+	public void sendMailToContactUs(String email) {
+		SimpleMailMessage message=new SimpleMailMessage();
+		message.setFrom("mygladproject@outlook.com");
+		message.setTo(email);
+		message.setSubject("Thanks For Contacting Us");
+		message.setText("Your Response has been recorded! We will reach out to you soon.");
+		mailSender.send(message);
+		
+	}
 	
 }
