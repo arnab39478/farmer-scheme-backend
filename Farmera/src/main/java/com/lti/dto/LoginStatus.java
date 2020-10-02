@@ -4,6 +4,7 @@ public class LoginStatus extends Status {
     
 	private int id;
 	private String name;
+	private boolean farmer;
 
 	public int getId() {
 		return id;
@@ -20,6 +21,16 @@ public class LoginStatus extends Status {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public boolean isFarmer() {
+		return farmer;
+	}
+
+	public void setFarmer(boolean farmer) {
+		this.farmer = farmer;
+	}
+	
+	
 	
 	
 }

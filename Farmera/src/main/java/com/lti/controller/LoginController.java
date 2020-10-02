@@ -40,6 +40,7 @@ public class LoginController {
 				loginStatus.setStatus(true);
 				loginStatus.setName(farmer.getFullName());
 				loginStatus.setId(farmer.getId());
+				loginStatus.setFarmer(true);
 				loginStatus.setStatusMessage("Login Successful!");
 				return loginStatus;
 					
@@ -57,6 +58,7 @@ public class LoginController {
 				loginStatus.setStatus(true);
 				loginStatus.setName(bidder.getFullName());
 				loginStatus.setId(bidder.getId());
+				loginStatus.setFarmer(false);
 				loginStatus.setStatusMessage("Login Successful!");
 				return loginStatus;
 			}
