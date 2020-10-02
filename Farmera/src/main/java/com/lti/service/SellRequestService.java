@@ -33,7 +33,7 @@ public class SellRequestService {
 		sellRequest.setQuantity(cropDetails.getQuantity());
 		sellRequest.setBasePrice(cropDetails.getBasePrice());
 		sellRequest.setRequestDate(LocalDate.now());
-		sellRequest.setBiddingDeadline(cropDetails.getSellingDeadline());
+		sellRequest.setSellingDeadline(cropDetails.getSellingDeadline());
 		sellRequest.setFertilizerType(cropDetails.getFertilizerType());
 		sellRequest.setFarmer(farmer);
 		sellRequest.setApprovedStatus('Y');
