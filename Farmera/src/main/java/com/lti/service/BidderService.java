@@ -17,6 +17,14 @@ public class BidderService {
 	@Autowired
 	private EmailService emailService;
 	
+	public int checkIfPresent(String email, String password) {
+		if(bDao.isBidderPresent(email,password)) 
+			return 1;
+		else return 0;
+		
+	}
+		
+	
 	public void register(Bidder bidder) {
 		if(bDao.fetchById(Bidder.class, bidder.getId())==null) {
 			bDao.save(bidder);
@@ -36,5 +44,7 @@ public class BidderService {
 			throw new BidderServiceException("Invalid email/password");
 		}
 	}
+	
+	
 
 }

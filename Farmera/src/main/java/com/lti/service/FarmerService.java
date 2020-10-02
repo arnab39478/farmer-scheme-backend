@@ -5,6 +5,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import com.lti.entity.Bidder;
 import com.lti.entity.Farmer;
 import com.lti.exception.FarmerServiceException;
 import com.lti.repository.FarmerDao;
@@ -17,6 +18,13 @@ public class FarmerService {
 	
 	@Autowired
 	private EmailService emailService;
+	
+	public int checkIfPresent(String email, String password) {
+		if(fDao.isFarmerPresent(email,password)) 
+			return 1;
+		else return 0;
+		
+	}
 	
 	public void register(Farmer farmer) {
 		if(fDao.fetchById(Farmer.class, farmer.getId())==null) {
