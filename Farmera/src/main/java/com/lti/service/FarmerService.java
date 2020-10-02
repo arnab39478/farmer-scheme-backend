@@ -29,7 +29,7 @@ public class FarmerService {
 	public void register(Farmer farmer) {
 		if(fDao.fetchById(Farmer.class, farmer.getId())==null) {
 			fDao.save(farmer);
-			//emailService.sendMailForNewFarmerRegisteration(farmer);
+			emailService.sendMailForNewFarmerRegisteration(farmer);
 		}	
 	    else 
 		    throw new FarmerServiceException("Farmer already registered!");	
