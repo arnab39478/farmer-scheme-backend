@@ -3,12 +3,13 @@ package com.lti.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.lti.entity.Farmer;
 import com.lti.exception.FarmerServiceException;
 import com.lti.repository.FarmerDao;
 
-
+@CrossOrigin
 @Service
 public class FarmerService {
 	
