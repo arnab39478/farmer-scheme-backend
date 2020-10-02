@@ -1,31 +1,40 @@
 package com.lti.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.lti.entity.Farmer;
 import com.lti.exception.FarmerServiceException;
-import com.lti.repository.GenericDao;
-import com.lti.repository.GenericDaoImpl;
+import com.lti.repository.FarmerDao;
 
 
 @Service
 public class FarmerService {
 	
 	@Autowired
-	private GenericDao dao;
+	private FarmerDao fDao;
 	
 	@Autowired
 	private EmailService emailService;
 	
 	public void register(Farmer farmer) {
-		if(dao.fetchById(Farmer.class, farmer.getId())==null) {
-			dao.save(farmer);
+		if(fDao.fetchById(Farmer.class, farmer.getId())==null) {
+			fDao.save(farmer);
 			//emailService.sendMailForNewFarmerRegisteration(farmer);
-			//then code to send an email to the farmer will be here
 		}	
 	    else 
 		    throw new FarmerServiceException("Farmer already registered!");	
+	}
+	
+	public Farmer login(String email, String password) {
+		try {
+			int id = fDao.findByEmailAndPassword(email, password);
+		    return fDao.fetchById(Farmer.class, id);	
+		}
+		catch(EmptyResultDataAccessException e) {
+			throw new FarmerServiceException("Invalid email/password");
+		}
 	}
 
 
