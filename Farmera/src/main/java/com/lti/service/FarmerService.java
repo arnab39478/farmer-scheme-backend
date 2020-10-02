@@ -9,7 +9,6 @@ import com.lti.entity.Farmer;
 import com.lti.exception.FarmerServiceException;
 import com.lti.repository.FarmerDao;
 
-@CrossOrigin
 @Service
 public class FarmerService {
 	
