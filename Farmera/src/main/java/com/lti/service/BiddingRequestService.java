@@ -45,10 +45,8 @@ public class BiddingRequestService {
 	}
 	
 	public int fetchCurrentBid(int sellRequestId) {
-		
-		BiddingRequest biddingRequest=brDao.fetchHighestBidForSellRequest(sellRequestId);
-		int currentBidAmt=biddingRequest.getAmount();
-		return currentBidAmt;
+
+		return brDao.fetchHighestBidForSellRequest(sellRequestId);
 				
 	}
 	

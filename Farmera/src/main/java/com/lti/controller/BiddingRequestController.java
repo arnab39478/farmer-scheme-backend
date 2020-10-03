@@ -25,7 +25,7 @@ public class BiddingRequestController {
 	@Autowired
 	private BiddingRequestService biddingRequestService;
 	
-	@GetMapping(path = "/view-sold-history")
+	@GetMapping(path = "/after-login-bidder")
 	public CropList viewCropsForBidding() {
 		
 		List<CropForSale> list=biddingRequestService.viewCropsForSale();
@@ -36,7 +36,7 @@ public class BiddingRequestController {
 		return listOfCrops;
 	}
 	
-	@GetMapping(path = "/views-active-bids")
+	@GetMapping(path = "/view-current-bid")
 	public CurrentBidStatus obtainCurrentBid(@RequestParam("sellRequestId") int sellRequestId) {
 		
 		CurrentBidStatus status=new CurrentBidStatus();

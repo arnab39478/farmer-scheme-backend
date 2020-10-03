@@ -34,7 +34,7 @@ public class BidderService {
 	public void register(Bidder bidder) {
 		if(bDao.fetchById(Bidder.class, bidder.getId())==null) {
 			bDao.save(bidder);
-			emailService.sendMailForNewBidderRegisteration(bidder);
+			//emailService.sendMailForNewBidderRegisteration(bidder);
 
 		}	
 	    else 

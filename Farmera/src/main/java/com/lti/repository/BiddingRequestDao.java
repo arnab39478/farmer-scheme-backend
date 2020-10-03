@@ -23,12 +23,10 @@ public class BiddingRequestDao extends GenericDaoImpl{
 		return entityManager.createQuery(jpql).setParameter("bid", id).getResultList();
 	}
 	
-	public BiddingRequest fetchHighestBidForSellRequest(int id){
+	public int fetchHighestBidForSellRequest(int id){
 		
-		return (BiddingRequest) entityManager.createQuery("select br from BiddingRequest br join br.sellRequest sr where sr.id=:id order by br.amount desc")
-				.setParameter("id", id)
-				.setMaxResults(1)
-				.getSingleResult();
+		return (int) entityManager.createQuery("select max(br.amount) from BiddingRequest br join br.sellRequest sr where sr.id=:id")
+				.setParameter("id", id).getSingleResult();
 	}
 	
 	
