@@ -20,9 +20,6 @@ public class SellRequestService {
 	@Autowired
 	private SellRequestDao srDao;
 	
-	@Autowired
-	private EmailService emailService;
-	
 	public void register(CropDetails cropDetails) {
 		
 		Farmer farmer=fdao.fetchById(Farmer.class, cropDetails.getFarmerId());
@@ -39,7 +36,6 @@ public class SellRequestService {
 		sellRequest.setApprovedStatus('Y');
 		
 		srDao.save(sellRequest);
-		//emailService.sendMailForCropSellRequest(sellRequest);
 	}
 
 }

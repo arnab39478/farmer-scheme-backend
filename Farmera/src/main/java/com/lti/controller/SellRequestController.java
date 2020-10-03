@@ -25,6 +25,7 @@ public class SellRequestController {
 			Status status = new Status();
 			status.setStatus(true);
 			status.setStatusMessage("Sell Request Placed!");
+			
 		    return status;
 		}
 		catch (SellRequestServiceException e) {
@@ -35,5 +36,7 @@ public class SellRequestController {
 		}
 		
 	}
+
+	
 
 }

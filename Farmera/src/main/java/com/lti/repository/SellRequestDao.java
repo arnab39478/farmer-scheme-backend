@@ -20,5 +20,10 @@ public class SellRequestDao extends GenericDaoImpl {
 		String jpql="select sr from SellRequest sr join sr.biddingRequest br where br.bidder.emailId=:em";
 		return entityManager.createQuery(jpql).setParameter("em", email).getResultList();
 	}
+	
+	public List<SellRequest> fetchCropSellRequests(){
+		String jpql="select sr from SellRequest sr";
+		return entityManager.createQuery(jpql).getResultList();
+	}
 
 }
