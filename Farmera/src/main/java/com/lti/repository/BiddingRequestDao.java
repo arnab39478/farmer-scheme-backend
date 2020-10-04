@@ -10,10 +10,10 @@ import com.lti.entity.Farmer;
 @Component("brdao")
 public class BiddingRequestDao extends GenericDaoImpl{
 	
-	public List<BiddingRequest> fetchBiddingRequestsForFarmerSellRequest(int id){
+	public List<BiddingRequest> fetchBiddingRequestsBySellRequestId(int id){
 				
-		String jpql="select br from BiddingRequest br join br.sellRequest sr where sr.farmer.id=:fid";
-		return entityManager.createQuery(jpql).setParameter("fid", id).getResultList();
+		String jpql="select br from BiddingRequest br join br.sellRequest sr where sr.id=:id order by br.amount desc";
+		return entityManager.createQuery(jpql).setParameter("id", id).setMaxResults(3).getResultList();
 		
 	}
 	

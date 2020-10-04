@@ -9,10 +9,10 @@ import com.lti.entity.SellRequest;
 @Component("srdao")
 public class SellRequestDao extends GenericDaoImpl {
 	
-	public List<SellRequest> fetchSellRequestsByFarmer(String email){
+	public List<SellRequest> fetchSellRequestsByFarmer(int id){		//Fetch Unsold Crops
 
-		String jpql="select sr from SellRequest sr join sr.farmer f where f.emailId=:em";
-		return entityManager.createQuery(jpql).setParameter("em", email).getResultList();
+		String jpql="select sr from SellRequest sr join sr.farmer f where f.id=:id";
+		return entityManager.createQuery(jpql).setParameter("id",id).getResultList();
 	}
 	
 	public List<SellRequest> fetchSellRequestsBidByBidder(String email){

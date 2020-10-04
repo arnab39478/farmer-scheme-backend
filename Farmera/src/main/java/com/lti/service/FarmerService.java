@@ -1,20 +1,29 @@
 package com.lti.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import com.lti.dto.CropForSale;
 import com.lti.entity.Bidder;
 import com.lti.entity.Farmer;
+import com.lti.entity.SellRequest;
 import com.lti.exception.FarmerServiceException;
 import com.lti.repository.FarmerDao;
+import com.lti.repository.SellRequestDao;
 
 @Service
 public class FarmerService {
 	
 	@Autowired
 	private FarmerDao fDao;
+	
+	@Autowired
+	private SellRequestDao srDao;
 	
 	@Autowired
 	private EmailService emailService;
@@ -48,6 +57,23 @@ public class FarmerService {
 		catch(EmptyResultDataAccessException e) {
 			throw new FarmerServiceException("Invalid email/password");
 		}
+	}
+	
+	public List<CropForSale> getCrops(int farmerId){
+		
+		List<CropForSale> crops=new ArrayList<>();
+		List<SellRequest> sellRequests=srDao.fetchSellRequestsByFarmer(farmerId);
+		for(SellRequest sr: sellRequests)
+		{
+			CropForSale crop=new CropForSale();
+			crop.setCropId(sr.getRequestId());
+			crop.setCropType(sr.getCropType());
+			crop.setCropName(sr.getCropName());
+			crop.setBasePrice(sr.getBasePrice());
+			crops.add(crop);
+		}
+		return crops;
+		
 	}
 
 

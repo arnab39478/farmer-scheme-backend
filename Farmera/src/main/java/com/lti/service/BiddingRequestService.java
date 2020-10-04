@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lti.dto.BidDetails;
+import com.lti.dto.BidForCrop;
 import com.lti.dto.CropForSale;
 import com.lti.entity.Bidder;
 import com.lti.entity.BiddingRequest;
@@ -49,6 +50,25 @@ public class BiddingRequestService {
 		return brDao.fetchHighestBidForSellRequest(sellRequestId);
 				
 	}
+	
+	public List<BidForCrop> viewPreviousBidsForCrop(int sellRequestId){
+		
+		List<BidForCrop> bids=new ArrayList<>();
+		List<BiddingRequest> biddingRequests=brDao.fetchBiddingRequestsBySellRequestId(sellRequestId);
+		for(BiddingRequest br: biddingRequests)
+		{
+			BidForCrop bid=new BidForCrop();
+			bid.setBidId(br.getId());
+			bid.setBidDate(br.getBidDate());
+			bid.setAmount(br.getAmount());
+			bid.setCropName(br.getSellRequest().getCropName());
+			bid.setSellRequestId(br.getSellRequest().getRequestId());
+			bids.add(bid);
+		}
+		return bids;
+	}
+	
+	
 	
 	public void placeBid(BidDetails bidDetails) {
 		
