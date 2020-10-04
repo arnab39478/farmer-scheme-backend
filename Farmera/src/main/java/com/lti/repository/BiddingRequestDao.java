@@ -29,6 +29,12 @@ public class BiddingRequestDao extends GenericDaoImpl{
 				.setParameter("id", id).getSingleResult();
 	}
 	
+	public List<BiddingRequest> getCropsSoldToBidder(int id){
+		
+		String jpql="select br from BiddingRequest br join br.sellRequest sr where br.finalStatus=:status and sr.farmer.id=:id";
+		return entityManager.createQuery(jpql).setParameter("status",'N').setParameter("id", id).getResultList();
+	}
+	
 	
 	
 

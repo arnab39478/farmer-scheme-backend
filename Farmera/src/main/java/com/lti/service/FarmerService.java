@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.lti.dto.CropForSale;
+import com.lti.dto.SoldCrop;
 import com.lti.entity.Bidder;
+import com.lti.entity.BiddingRequest;
 import com.lti.entity.Farmer;
 import com.lti.entity.SellRequest;
 import com.lti.exception.FarmerServiceException;
+import com.lti.repository.BiddingRequestDao;
 import com.lti.repository.FarmerDao;
 import com.lti.repository.SellRequestDao;
 
@@ -24,6 +27,9 @@ public class FarmerService {
 	
 	@Autowired
 	private SellRequestDao srDao;
+	
+	@Autowired
+	private BiddingRequestDao brDao;
 	
 	@Autowired
 	private EmailService emailService;
@@ -73,6 +79,25 @@ public class FarmerService {
 			crops.add(crop);
 		}
 		return crops;
+		
+	}
+	
+	public List<SoldCrop> getSoldCrops(int farmerId){
+		
+		List<SoldCrop> soldCrops=new ArrayList<>();
+		List<BiddingRequest> biddingRequests=brDao.getCropsSoldToBidder(farmerId);
+		for(BiddingRequest br: biddingRequests)
+		{
+			SoldCrop crop=new SoldCrop();
+			crop.setSellRequestId(br.getSellRequest().getRequestId());
+			crop.setCropName(br.getSellRequest().getCropName());
+			crop.setBasePrice(br.getSellRequest().getBasePrice());
+			crop.setQuantity(br.getSellRequest().getQuantity());
+			crop.setSoldPrice(br.getAmount());
+			crop.setSoldDate(br.getSellRequest().getSellingDeadline());
+			soldCrops.add(crop);
+		}
+		return soldCrops;
 		
 	}
 

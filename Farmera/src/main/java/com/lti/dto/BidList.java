@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BidList extends Status {
 	
-	List<BidForCrop> bidForCrop;
+	private List<BidForCrop> bidForCrop;
 
 	public List<BidForCrop> getBidForCrop() {
 		return bidForCrop;
