@@ -61,4 +61,22 @@ public class EmailService {
 		
 	}
 	
+	public void sendMailForSoldCrop(Farmer farmer) {
+		SimpleMailMessage message=new SimpleMailMessage();
+		message.setFrom("mygladproject@outlook.com");
+		message.setTo(farmer.getEmailId());
+		message.setSubject("Congratulations!");
+		message.setText("Your crop has been sold! Login for more details.");
+		mailSender.send(message);		
+	}
+	
+	public void sendMailForWinningBid(Bidder bidder) {
+		SimpleMailMessage message=new SimpleMailMessage();
+		message.setFrom("mygladproject@outlook.com");
+		message.setTo(bidder.getEmailId());
+		message.setSubject("Congratulations!");
+		message.setText("Your bid has been accepted! Login for more details.");
+		mailSender.send(message);
+	}
+	
 }

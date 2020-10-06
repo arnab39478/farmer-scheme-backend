@@ -21,6 +21,9 @@ public class AdminService {
 	@Autowired
 	private AdminDao aDao;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	public List<Farmer> getAllFarmerRequests(){		
 		
 		return aDao.getAllFarmers();		
@@ -92,9 +95,11 @@ public class AdminService {
 		BiddingRequest biddingRequest=aDao.fetchWinningBid(sellRequestId);
 		biddingRequest.setFinalStatus('Y');
 		aDao.save(biddingRequest);
+		//emailService.sendMailForWinningBid(biddingRequest.getBidder());
 		sellRequest.setBiddingStatus('C');
 		sellRequest.setBiddingDeadline(LocalDate.now());
 		aDao.save(sellRequest);
+		//emailService.sendMailForSoldCrop(sellRequest.getFarmer());
 	}
 		
 
