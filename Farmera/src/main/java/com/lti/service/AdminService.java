@@ -42,22 +42,30 @@ public class AdminService {
 	
 	public void approveFarmer(int farmerId){
 		
-		aDao.updateFarmerApprovedStatus(farmerId);
+		Farmer farmer=aDao.fetchById(Farmer.class, farmerId);
+		farmer.setApprovedStatus('Y');
+		aDao.save(farmer);
 	}
 	
 	public void approveBidder(int bidderId){
 		
-		aDao.updateBidderApprovedStatus(bidderId);
+		Bidder bidder=aDao.fetchById(Bidder.class, bidderId);
+		bidder.setApprovedStatus('Y');
+		aDao.save(bidder);
 	}
 	
 	public void approveSellRequest(int requestId){
 		
-		aDao.updateSellRequestApprovedStatus(requestId);
+		SellRequest sellRequest=aDao.fetchById(SellRequest.class, requestId);
+		sellRequest.setApprovedStatus('Y');
+		aDao.save(sellRequest);
 	}
 	
 	public void approveBiddingRequest(int requestId) {
 		
-		aDao.updateBiddingRequestApprovedStatus(requestId);
+		BiddingRequest biddingRequest=aDao.fetchById(BiddingRequest.class, requestId);
+		biddingRequest.setApprovedStatus('Y');
+		aDao.save(biddingRequest);
 	}
 	
 	public Admin login(String email, String Password) {

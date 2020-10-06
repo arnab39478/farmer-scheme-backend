@@ -31,26 +31,5 @@ public class AdminDao extends GenericDaoImpl {
 		
 		return entityManager.createQuery("select br from BiddingRequest br").getResultList();
 	}
-	
-	public void updateFarmerApprovedStatus(int id) {
-		
-		entityManager.createQuery("update Farmer f set f.approvedStatus=:status where f.id=:id").setParameter("status",'Y').setParameter("id",id);
-	}
-	
-	public void updateBidderApprovedStatus(int id) {
-		
-		entityManager.createQuery("update Bidder b set b.approvedStatus=:status where b.id=:id").setParameter("status",'Y').setParameter("id",id);
-	}
-	
-	public void updateSellRequestApprovedStatus(int id) {
-		
-		entityManager.createQuery("update SellRequest sr set sr.approvedStatus=:status where sr.requestId=:id").setParameter("status",'Y').setParameter("id",id);
-	}
-	
-	public void updateBiddingRequestApprovedStatus(int id) {
-		
-		entityManager.createQuery("update BiddingRequest br set br.approvedStatus=:status where br.id=:id").setParameter("status",'Y').setParameter("id",id);
-	
-	}
 
 }
