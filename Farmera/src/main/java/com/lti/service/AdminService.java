@@ -59,6 +59,7 @@ public class AdminService {
 		
 		SellRequest sellRequest=aDao.fetchById(SellRequest.class, requestId);
 		sellRequest.setApprovedStatus('Y');
+		sellRequest.setBiddingStatus('O');
 		aDao.save(sellRequest);
 	}
 	
