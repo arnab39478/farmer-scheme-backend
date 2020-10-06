@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.AdminData;
 import com.lti.dto.AdminLoginStatus;
+import com.lti.dto.Crop;
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.Status;
@@ -104,6 +105,15 @@ public class AdminController {
 		status.setStatus(true);
 		status.setStatusMessage("Bidding Request Approved!");
 		return status;		
+	}
+	
+	@PostMapping("/set-bidding-deadline")
+	public Status setBiddingDeadline(@RequestBody Crop crop) {
+		Status status=new Status();
+		adminService.setBiddingDeadlineForCrop(crop.getRequestId(),crop.getBiddingDeadline());
+		status.setStatus(true);
+		status.setStatusMessage("Bidding Deadline set!");
+		return status;
 	}
 	
 }

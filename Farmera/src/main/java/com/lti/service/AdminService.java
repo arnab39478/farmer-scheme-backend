@@ -1,5 +1,6 @@
 package com.lti.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,14 @@ public class AdminService {
 		BiddingRequest biddingRequest=aDao.fetchById(BiddingRequest.class, requestId);
 		biddingRequest.setApprovedStatus('Y');
 		aDao.save(biddingRequest);
+	}
+	
+	public void setBiddingDeadlineForCrop(int sellRequestId, LocalDate biddingDeadline) {
+		
+		SellRequest sellRequest=aDao.fetchById(SellRequest.class, sellRequestId);
+		sellRequest.setBiddingDeadline(biddingDeadline);
+		aDao.save(sellRequest);
+		
 	}
 	
 	public Admin login(String email, String Password) {
