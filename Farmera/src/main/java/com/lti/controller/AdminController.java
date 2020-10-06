@@ -116,4 +116,13 @@ public class AdminController {
 		return status;
 	}
 	
+	@GetMapping("/close-bidding")
+	public Status closeBidding(@RequestParam("requestId") int requestId) {
+		Status status=new Status();
+		adminService.endBiddingForCrop(requestId);
+		status.setStatus(true);
+		status.setStatusMessage("Bidding closed!");
+		return status;
+	}
+	
 }

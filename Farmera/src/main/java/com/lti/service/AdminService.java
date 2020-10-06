@@ -86,6 +86,16 @@ public class AdminService {
 			throw new AdminServiceException("Invalid Credentials!");		
 		}
 	}
+	
+	public void endBiddingForCrop(int sellRequestId) {
+		SellRequest sellRequest=aDao.fetchById(SellRequest.class, sellRequestId);
+		BiddingRequest biddingRequest=aDao.fetchWinningBid(sellRequestId);
+		biddingRequest.setFinalStatus('Y');
+		aDao.save(biddingRequest);
+		sellRequest.setBiddingStatus('C');
+		sellRequest.setBiddingDeadline(LocalDate.now());
+		aDao.save(sellRequest);
+	}
 		
 
 }

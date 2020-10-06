@@ -32,4 +32,11 @@ public class AdminDao extends GenericDaoImpl {
 		return entityManager.createQuery("select br from BiddingRequest br").getResultList();
 	}
 
+	public BiddingRequest fetchWinningBid(int id) {
+		
+		return (BiddingRequest) entityManager.createQuery("select br from BiddingRequest br join br.sellRequest sr where sr.requestId=:id order by br.amount desc")
+				.setParameter("id",id).setMaxResults(1).getSingleResult();
+		
+	}
+	
 }
