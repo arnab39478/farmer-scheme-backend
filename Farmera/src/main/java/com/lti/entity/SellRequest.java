@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Sell_Request")
 public class SellRequest {
@@ -27,6 +29,7 @@ public class SellRequest {
 	private int requestId;
 
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "Farmer_Id")
 	private Farmer farmer;
 
@@ -63,6 +66,7 @@ public class SellRequest {
 	private char biddingStatus;
 	
 	@OneToMany(mappedBy = "sellRequest", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JsonIgnore
 	@Column(name = "Bidding_Requests")
 	private List<BiddingRequest> biddingRequest;
 

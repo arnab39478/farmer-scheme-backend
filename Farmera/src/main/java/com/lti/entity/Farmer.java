@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Farmer {
@@ -61,6 +63,7 @@ public class Farmer {
 	private char approvedStatus;
 
 	@OneToMany(mappedBy = "farmer", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JsonIgnore
 	@Column(name = "Sell_Requests")
 	private List<SellRequest> sellRequest;
 

@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="Bidding_Request")
 public class BiddingRequest {
@@ -23,10 +25,12 @@ public class BiddingRequest {
 	private int id;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "Bidder_Id")
 	private Bidder bidder;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "Farmer_SellRequestId")
 	private SellRequest sellRequest;	
 
