@@ -37,8 +37,8 @@ public class SellRequestService {
 		sellRequest.setSellingDeadline(cropDetails.getSellingDeadline());
 		sellRequest.setFertilizerType(cropDetails.getFertilizerType());
 		sellRequest.setFarmer(farmer);
-		sellRequest.setApprovedStatus('Y');
-
+		sellRequest.setApprovedStatus('N');
+		sellRequest.setBiddingStatus('O');
 		srDao.save(sellRequest);
 	}
 
