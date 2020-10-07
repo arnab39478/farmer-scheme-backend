@@ -94,7 +94,7 @@ public class AdminController {
 		adminService.approveSellRequest(requestId);
 		status.setStatus(true);
 		status.setStatusMessage("Sell Request Approved!");
-		return status;		
+		return status;
 	}
 	
 	@GetMapping(path = "/approve-bidding-request")
