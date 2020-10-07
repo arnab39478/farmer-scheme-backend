@@ -69,6 +69,8 @@ public class AdminService {
 	public void approveBiddingRequest(int requestId) {
 		
 		BiddingRequest biddingRequest=aDao.fetchById(BiddingRequest.class, requestId);
+		if(biddingRequest.getApprovedStatus()=='Y')
+			throw new AdminServiceException("Request already approved!");
 		biddingRequest.setApprovedStatus('Y');
 		aDao.save(biddingRequest);
 	}
@@ -76,6 +78,9 @@ public class AdminService {
 	public void setBiddingDeadlineForCrop(int sellRequestId, LocalDate biddingDeadline) {
 		
 		SellRequest sellRequest=aDao.fetchById(SellRequest.class, sellRequestId);
+		if(sellRequest.getSellingDeadline().compareTo(biddingDeadline)<0)
+			throw new AdminServiceException("Enter proper bidding deadline!");
+		sellRequest.setBiddingStatus('Y');
 		sellRequest.setBiddingDeadline(biddingDeadline);
 		aDao.save(sellRequest);
 		

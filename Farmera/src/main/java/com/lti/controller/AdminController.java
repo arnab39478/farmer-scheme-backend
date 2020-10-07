@@ -101,19 +101,34 @@ public class AdminController {
 	public Status approveBiddingRequest(@RequestParam("requestId") int requestId) {
 		
 		Status status=new Status();
-		adminService.approveBiddingRequest(requestId);
-		status.setStatus(true);
-		status.setStatusMessage("Bidding Request Approved!");
-		return status;		
+		try {
+			adminService.approveBiddingRequest(requestId);
+			status.setStatus(true);
+			status.setStatusMessage("Bidding Request Approved!");
+			return status;		
+		}
+		catch(AdminServiceException e) {
+			status.setStatus(false);
+			status.setStatusMessage(e.getMessage());
+			return status;	
+		}
 	}
 	
 	@PostMapping("/set-bidding-deadline")
 	public Status setBiddingDeadline(@RequestBody Crop crop) {
 		Status status=new Status();
-		adminService.setBiddingDeadlineForCrop(crop.getRequestId(),crop.getBiddingDeadline());
-		status.setStatus(true);
-		status.setStatusMessage("Bidding Deadline set!");
-		return status;
+		try {
+			adminService.setBiddingDeadlineForCrop(crop.getRequestId(),crop.getBiddingDeadline());
+			status.setStatus(true);
+			status.setStatusMessage("Bidding Deadline set!");
+			return status;
+		}
+		catch(AdminServiceException e) {
+			status.setStatus(false);
+			status.setStatusMessage(e.getMessage());
+			return status;
+			
+		}
 	}
 	
 	@GetMapping("/close-bidding")
