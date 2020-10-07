@@ -1,10 +1,11 @@
 package com.lti.repository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component("fdao")
-public class FarmerDao extends GenericDaoImpl {
+@Repository
+public class FarmerRepoImpl extends GenericRepoImpl implements FarmerRepo {
 	
+	@Override
 	public boolean isFarmerRegistered(String email) {
 		return (Long)
 				entityManager
@@ -13,6 +14,7 @@ public class FarmerDao extends GenericDaoImpl {
 				.getSingleResult() == 1 ? true : false;
 	}
 	
+	@Override
 	public boolean isFarmerPresent(String email, String password) {
 		return (Long)
 				entityManager
@@ -22,6 +24,7 @@ public class FarmerDao extends GenericDaoImpl {
 				.getSingleResult() == 1 ? true : false;
 	}
 	
+	@Override
 	public int findByEmailAndPassword(String email, String password) {
 		return (Integer)
 				entityManager
@@ -30,10 +33,5 @@ public class FarmerDao extends GenericDaoImpl {
 		        .setParameter("pw", password)
 		        .getSingleResult();
 	}
-
-	
-	 
-	
-	
 
 }

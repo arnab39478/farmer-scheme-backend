@@ -1,10 +1,11 @@
 package com.lti.repository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component("bDao")
-public class BidderDao extends GenericDaoImpl {
+@Repository
+public class BidderRepoImpl extends GenericRepoImpl implements BidderRepo {
 	
+	@Override
 	public boolean isBidderRegistered(String email) {
 		return (Long)
 				entityManager
@@ -13,8 +14,7 @@ public class BidderDao extends GenericDaoImpl {
 				.getSingleResult() == 1 ? true : false;
 	} 
 	
-	
-	
+	@Override
 	public boolean isBidderPresent(String email, String password) {
 		return (Long)
 				entityManager
@@ -24,6 +24,7 @@ public class BidderDao extends GenericDaoImpl {
 				.getSingleResult() == 1 ? true : false;
 	} 
 	
+	@Override
 	public int findByEmailAndPassword(String email, String password) {
 		return (Integer)
 				entityManager
