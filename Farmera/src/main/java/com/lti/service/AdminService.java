@@ -3,6 +3,8 @@ package com.lti.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -86,12 +88,12 @@ public class AdminService {
 		
 	}
 	
-	public Admin login(String email, String Password) {
-		try {
-			return aDao.fetchById(Admin.class, email);
-		}
-		catch(EmptyResultDataAccessException e) {
-			throw new AdminServiceException("Invalid Credentials!");		
+	public Admin login(String email, String password) {
+		try { 
+			return aDao.fetchByEmailAndPassword(email, password);		
+
+		} catch (NoResultException e) {
+			throw new AdminServiceException("Invalid Credentials!");			
 		}
 	}
 	
