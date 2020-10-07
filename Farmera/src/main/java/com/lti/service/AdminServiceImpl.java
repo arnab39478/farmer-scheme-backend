@@ -26,6 +26,17 @@ public class AdminServiceImpl implements AdminService {
 	private EmailService emailService;
 	
 	@Override
+	public Farmer getFarmer(int farmerId) {
+		return aRepo.fetchById(Farmer.class, farmerId);
+	}
+	
+	@Override
+	public Bidder getBidder(int bidderId) {
+		return aRepo.fetchById(Bidder.class, bidderId);
+	}
+	
+	
+	@Override
 	public List<Farmer> getAllFarmerRequests(){		
 		
 		return aRepo.getAllFarmers();		

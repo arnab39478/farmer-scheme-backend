@@ -46,8 +46,18 @@ public class AdminController {
 		 status.setStatus(false);
          status.setStatusMessage("Admin Not Found!");
          return status;
-	}	     
-}
+		}	     
+	}
+	
+	@GetMapping(path="/get-farmer-details")
+	public Farmer getFarmerDetails(@RequestParam("farmerId")int farmerId) {
+		return adminService.getFarmer(farmerId);
+	}
+	
+	@GetMapping(path="/get-bidder-details")
+	public Bidder getBidderDetails(@RequestParam("bidderId")int bidderId) {
+		return adminService.getBidder(bidderId);
+	}
 	
 	@GetMapping(path = "/view-all-requests")
 	public AdminData viewAllRequests() {

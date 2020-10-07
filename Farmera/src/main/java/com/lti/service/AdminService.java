@@ -33,4 +33,8 @@ public interface AdminService {
 
 	void endBiddingForCrop(int sellRequestId);
 
+	Farmer getFarmer(int farmerId);
+
+	Bidder getBidder(int bidderId);
+
 }
