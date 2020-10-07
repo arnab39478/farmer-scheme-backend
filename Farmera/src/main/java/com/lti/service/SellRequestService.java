@@ -26,7 +26,7 @@ public class SellRequestService {
 		Farmer farmer=fdao.fetchById(Farmer.class, cropDetails.getFarmerId());
 		if(farmer.getApprovedStatus()=='N')
 			throw new SellRequestServiceException("Farmer not approved!");
-		if(cropDetails.getSellingDeadline().compareTo(LocalDate.now())<1)
+		if(cropDetails.getSellingDeadline().compareTo(LocalDate.now())<0)
 			throw new SellRequestServiceException("Enter proper selling deadline!");
 		SellRequest sellRequest=new SellRequest();
 		sellRequest.setCropType(cropDetails.getCropType());
