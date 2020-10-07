@@ -49,12 +49,12 @@ public class AdminController {
 		}	     
 	}
 	
-	@GetMapping(path="/get-farmer-details")
+	@GetMapping(path = "/get-farmer-details")
 	public Farmer getFarmerDetails(@RequestParam("farmerId")int farmerId) {
 		return adminService.getFarmer(farmerId);
 	}
 	
-	@GetMapping(path="/get-bidder-details")
+	@GetMapping(path = "/get-bidder-details")
 	public Bidder getBidderDetails(@RequestParam("bidderId")int bidderId) {
 		return adminService.getBidder(bidderId);
 	}
