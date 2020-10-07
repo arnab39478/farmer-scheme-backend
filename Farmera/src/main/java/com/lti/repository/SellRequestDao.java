@@ -22,8 +22,8 @@ public class SellRequestDao extends GenericDaoImpl {
 	}
 	
 	public List<SellRequest> fetchCropSellRequests(){
-		String jpql="select sr from SellRequest sr";
-		return entityManager.createQuery(jpql).getResultList();
+		String jpql="select sr from SellRequest sr where sr.biddingStatus=:status";
+		return entityManager.createQuery(jpql).setParameter("status",'O').getResultList();
 	}
 
 }

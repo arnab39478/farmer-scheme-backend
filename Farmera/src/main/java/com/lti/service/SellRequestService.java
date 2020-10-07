@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.lti.dto.CropDetails;
 import com.lti.entity.Farmer;
 import com.lti.entity.SellRequest;
+import com.lti.exception.SellRequestServiceException;
 import com.lti.repository.FarmerDao;
 import com.lti.repository.SellRequestDao;
 
@@ -21,9 +22,10 @@ public class SellRequestService {
 	private SellRequestDao srDao;
 	
 	public void register(CropDetails cropDetails) {
-		
+
 		Farmer farmer=fdao.fetchById(Farmer.class, cropDetails.getFarmerId());
-		
+		if(farmer.getApprovedStatus()=='N')
+			throw new SellRequestServiceException("Farmer not approved!");
 		SellRequest sellRequest=new SellRequest();
 		sellRequest.setCropType(cropDetails.getCropType());
 		sellRequest.setCropName(cropDetails.getCropName());
@@ -34,7 +36,7 @@ public class SellRequestService {
 		sellRequest.setFertilizerType(cropDetails.getFertilizerType());
 		sellRequest.setFarmer(farmer);
 		sellRequest.setApprovedStatus('Y');
-		
+
 		srDao.save(sellRequest);
 	}
 

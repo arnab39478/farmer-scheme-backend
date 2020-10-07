@@ -13,6 +13,7 @@ import com.lti.dto.CropForSale;
 import com.lti.entity.Bidder;
 import com.lti.entity.BiddingRequest;
 import com.lti.entity.SellRequest;
+import com.lti.exception.BiddingRequestServiceException;
 import com.lti.repository.BidderDao;
 import com.lti.repository.BiddingRequestDao;
 import com.lti.repository.SellRequestDao;
@@ -73,8 +74,11 @@ public class BiddingRequestService {
 	public void placeBid(BidDetails bidDetails) {
 		
 		Bidder bidder=bDao.fetchById(Bidder.class, bidDetails.getBidderId());
+		if(bidder.getApprovedStatus()=='N')
+			throw new BiddingRequestServiceException("Bidder not approved!");
 		SellRequest sellRequest=srDao.fetchById(SellRequest.class, bidDetails.getSellRequestId());
-		
+		if(sellRequest.getBiddingStatus()=='C')
+			throw new BiddingRequestServiceException("Bidding for crop has been closed! Please contact admin for more details!");
 		BiddingRequest biddingRequest=new BiddingRequest();
 		biddingRequest.setBidDate(LocalDate.now());
 		biddingRequest.setAmount(bidDetails.getAmount());

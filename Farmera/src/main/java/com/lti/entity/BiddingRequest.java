@@ -102,7 +102,7 @@ public class BiddingRequest {
 		this.finalStatus = finalStatus;
 	}
 
-	
+	 
 
 	
 
