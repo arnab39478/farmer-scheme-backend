@@ -60,7 +60,7 @@ public class AdminController {
 	}
 	
 	@GetMapping(path = "/view-all-requests")
-	public AdminData viewAllRequests() {
+	public AdminData viewAllRequests(@RequestParam("admin") String admin) {
 		
 		AdminData adminData=new AdminData();
 		List<Farmer> farmerList=adminService.getAllFarmerRequests();
@@ -73,6 +73,8 @@ public class AdminController {
 		adminData.setCropSellRequest(sellRequestList);
 		adminData.setBiddingRequest(biddingRequestList);
 		
+		adminData.setStatus(true);
+		adminData.setStatusMessage("Data available!");
 		return adminData;		
 		
 	}
