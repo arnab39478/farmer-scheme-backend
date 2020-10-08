@@ -50,9 +50,6 @@ public class SellRequest {
 	@Column(name = "Fertilizer_Type")
 	private String fertilizerType;
 
-	@Column(name = "Soil_pH_Certificate")
-	private String soilpHCertificate;
-
 	@Column(name = "Selling_Deadline")
 	private LocalDate sellingDeadline;
 
@@ -100,10 +97,6 @@ public class SellRequest {
 
 	public String getFertilizerType() {
 		return fertilizerType;
-	}
-
-	public String getSoilpHCertificate() {
-		return soilpHCertificate;
 	}
 
 	public LocalDate getSellingDeadline() {
@@ -158,10 +151,6 @@ public class SellRequest {
 		this.fertilizerType = fertilizerType;
 	}
 
-	public void setSoilpHCertificate(String soilpHCertificate) {
-		this.soilpHCertificate = soilpHCertificate;
-	}
-
 	public void setSellingDeadline(LocalDate sellingDeadline) {
 		this.sellingDeadline = sellingDeadline;
 	}
@@ -181,8 +170,5 @@ public class SellRequest {
 	public void setBiddingRequest(List<BiddingRequest> biddingRequest) {
 		this.biddingRequest = biddingRequest;
 	}
-	
-	
-
 
 }

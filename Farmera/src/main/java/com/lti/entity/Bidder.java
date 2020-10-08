@@ -45,11 +45,7 @@ public class Bidder {
 	private long accountNo;
 
 	private String ifsc;
-	private String aadhar;
-	private String pan;
-	
-	@Column(name = "Trader_License")
-	private String traderLicense;
+
 	private String password;
 
 	@Column(name = "Approved_Status")
@@ -94,18 +90,6 @@ public class Bidder {
 
 	public String getIfsc() {
 		return ifsc;
-	}
-
-	public String getAadhar() {
-		return aadhar;
-	}
-
-	public String getPan() {
-		return pan;
-	}
-
-	public String getTraderLicense() {
-		return traderLicense;
 	}
 
 	public String getPassword() {
@@ -154,18 +138,6 @@ public class Bidder {
 
 	public void setIfsc(String ifsc) {
 		this.ifsc = ifsc;
-	}
-
-	public void setAadhar(String aadhar) {
-		this.aadhar = aadhar;
-	}
-
-	public void setPan(String pan) {
-		this.pan = pan;
-	}
-
-	public void setTraderLicense(String traderLicense) {
-		this.traderLicense = traderLicense;
 	}
 
 	public void setPassword(String password) {

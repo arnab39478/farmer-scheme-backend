@@ -54,9 +54,6 @@ public class Farmer {
 	private long accountNo;
 
 	private String ifsc;
-	private String aadhar;
-	private String pan;
-	private String certificate;
 	private String password;
 
 	@Column(name = "Approved_Status")
@@ -113,18 +110,6 @@ public class Farmer {
 
 	public String getIfsc() {
 		return ifsc;
-	}
-
-	public String getAadhar() {
-		return aadhar;
-	}
-
-	public String getPan() {
-		return pan;
-	}
-
-	public String getCertificate() {
-		return certificate;
 	}
 
 	public String getPassword() {
@@ -187,18 +172,6 @@ public class Farmer {
 		this.ifsc = ifsc;
 	}
 
-	public void setAadhar(String aadhar) {
-		this.aadhar = aadhar;
-	}
-
-	public void setPan(String pan) {
-		this.pan = pan;
-	}
-
-	public void setCertificate(String certificate) {
-		this.certificate = certificate;
-	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -218,7 +191,5 @@ public class Farmer {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
 
 }
