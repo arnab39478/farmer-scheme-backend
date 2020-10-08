@@ -79,6 +79,7 @@ public class FarmerServiceImpl implements FarmerService {
 			crop.setCropType(sr.getCropType());
 			crop.setCropName(sr.getCropName());
 			crop.setBasePrice(sr.getBasePrice());
+			crop.setBiddingDeadline(sr.getBiddingDeadline());
 			crops.add(crop);
 		}
 		return crops;

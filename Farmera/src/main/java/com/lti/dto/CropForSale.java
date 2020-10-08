@@ -1,5 +1,7 @@
 package com.lti.dto;
 
+import java.time.LocalDate;
+
 public class CropForSale {
 	
 	private int cropId;
@@ -7,6 +9,7 @@ public class CropForSale {
 	private String cropName;
 	private int basePrice;
 	private int currentBid;
+	private LocalDate biddingDeadline;
 	public int getCropId() {
 		return cropId;
 	}
@@ -36,6 +39,12 @@ public class CropForSale {
 	}
 	public void setCurrentBid(int currentBid) {
 		this.currentBid = currentBid;
+	}
+	public LocalDate getBiddingDeadline() {
+		return biddingDeadline;
+	}
+	public void setBiddingDeadline(LocalDate biddingDeadline) {
+		this.biddingDeadline = biddingDeadline;
 	}
 	
 	
