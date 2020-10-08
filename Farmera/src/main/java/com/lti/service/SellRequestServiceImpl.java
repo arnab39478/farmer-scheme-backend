@@ -39,7 +39,7 @@ public class SellRequestServiceImpl implements SellRequestService {
 		sellRequest.setFertilizerType(cropDetails.getFertilizerType());
 		sellRequest.setFarmer(farmer);
 		sellRequest.setApprovedStatus('N');
-		sellRequest.setBiddingStatus('O');
+		sellRequest.setBiddingStatus('C');
 		srRepo.save(sellRequest);
 	}
 

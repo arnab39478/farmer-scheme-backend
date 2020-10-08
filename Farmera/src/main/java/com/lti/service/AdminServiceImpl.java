@@ -80,6 +80,8 @@ public class AdminServiceImpl implements AdminService {
 	public void approveSellRequest(int requestId){
 		
 		SellRequest sellRequest=aRepo.fetchById(SellRequest.class, requestId);
+		if(sellRequest.getApprovedStatus()=='Y')
+			throw new AdminServiceException("Request already approved!");
 		sellRequest.setApprovedStatus('Y');
 		sellRequest.setBiddingStatus('O');
 		aRepo.save(sellRequest);

@@ -89,7 +89,7 @@ public class BiddingRequestServiceImpl implements BiddingRequestService {
 		biddingRequest.setBidder(bidder);
 		biddingRequest.setSellRequest(sellRequest);
 		biddingRequest.setFinalStatus('N');
-		biddingRequest.setApprovedStatus('Y');
+		biddingRequest.setApprovedStatus('N');
 		
 		brRepo.save(biddingRequest);
 		
