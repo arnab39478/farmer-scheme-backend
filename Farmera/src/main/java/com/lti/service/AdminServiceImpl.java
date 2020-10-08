@@ -104,6 +104,9 @@ public class AdminServiceImpl implements AdminService {
 		if(sellRequest.getSellingDeadline().compareTo(biddingDeadline)<0 || sellRequest.getRequestDate().compareTo(biddingDeadline)>0)
 			throw new AdminServiceException("Enter proper bidding deadline!");
 		sellRequest.setBiddingStatus('O');
+		BiddingRequest biddingRequest=aRepo.fetchWinningBid(sellRequestId);
+		biddingRequest.setFinalStatus('N');
+		aRepo.save(biddingRequest);
 		sellRequest.setBiddingDeadline(biddingDeadline);
 		aRepo.save(sellRequest);
 		
