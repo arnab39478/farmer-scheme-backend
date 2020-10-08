@@ -125,11 +125,11 @@ public class AdminServiceImpl implements AdminService {
 		BiddingRequest biddingRequest=aRepo.fetchWinningBid(sellRequestId);
 		biddingRequest.setFinalStatus('Y');
 		aRepo.save(biddingRequest);
-		//emailService.sendMailForWinningBid(biddingRequest.getBidder());
+		emailService.sendMailForWinningBid(biddingRequest.getBidder());
 		sellRequest.setBiddingStatus('C');
 		sellRequest.setBiddingDeadline(LocalDate.now());
 		aRepo.save(sellRequest);
-		//emailService.sendMailForSoldCrop(sellRequest.getFarmer());
+		emailService.sendMailForSoldCrop(sellRequest.getFarmer());
 	}
 	
 }

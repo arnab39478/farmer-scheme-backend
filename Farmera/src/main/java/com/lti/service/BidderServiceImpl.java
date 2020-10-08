@@ -36,7 +36,7 @@ public class BidderServiceImpl implements BidderService {
 	public void register(Bidder bidder) {
 		if(bRepo.fetchById(Bidder.class, bidder.getId())==null) {
 			bRepo.save(bidder);
-			//emailService.sendMailForNewBidderRegisteration(bidder);
+			emailService.sendMailForNewBidderRegisteration(bidder);
 
 		}	
 	    else 

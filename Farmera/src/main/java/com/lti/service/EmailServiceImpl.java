@@ -21,7 +21,7 @@ public class EmailServiceImpl implements EmailService {
 		message.setFrom("mygladproject@outlook.com");
 		message.setTo(farmer.getEmailId());
 		message.setSubject("Registration complete!");
-		message.setText("Greetings "+farmer.getFullName());
+		message.setText("Greetings "+farmer.getFullName()+"! You are now registered as Farmer. Welcome to Farmera family!");
 		mailSender.send(message);
 	}
 
@@ -31,7 +31,7 @@ public class EmailServiceImpl implements EmailService {
 		message.setFrom("mygladproject@outlook.com");
 		message.setTo(bidder.getEmailId());
 		message.setSubject("Registration complete!");
-		message.setText("Greetings "+bidder.getFullName());
+		message.setText("Greetings "+bidder.getFullName()+"! You are now registered as Bidder. Welcome to Farmera family!");
 		mailSender.send(message);
 	}
 	

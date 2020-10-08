@@ -50,7 +50,7 @@ public class FarmerServiceImpl implements FarmerService {
 	public void register(Farmer farmer) {
 		if(fRepo.fetchById(Farmer.class, farmer.getId())==null) {
 			fRepo.save(farmer);
-			//emailService.sendMailForNewFarmerRegisteration(farmer);
+			emailService.sendMailForNewFarmerRegisteration(farmer);
 		}	
 	    else 
 		    throw new FarmerServiceException("Farmer already registered!");	
