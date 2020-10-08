@@ -1,7 +1,5 @@
 package com.lti.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +25,7 @@ public class ForgotPasswordController {
 	private BidderService bidderService;
 	
 	@GetMapping("/forgot-password")
-	public Status forgotPassword(@RequestParam("email") String email, HttpServletRequest request) {
+	public Status forgotPassword(@RequestParam("email") String email) {
 			int farmerPresent = farmerService.checkForFarmer(email);
 			int bidderPresent = bidderService.checkForBidder(email);
 			
