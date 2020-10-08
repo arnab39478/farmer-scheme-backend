@@ -103,10 +103,17 @@ public class AdminController {
 	public Status approveSellRequest(@RequestParam("requestId") int requestId) {
 		
 		Status status=new Status();
-		adminService.approveSellRequest(requestId);
-		status.setStatus(true);
-		status.setStatusMessage("Sell Request Approved!");
-		return status;
+		try {
+			adminService.approveSellRequest(requestId);
+			status.setStatus(true);
+			status.setStatusMessage("Sell Request Approved!");
+			return status;
+		}
+		catch(AdminServiceException e) {
+			status.setStatus(false);
+			status.setStatusMessage(e.getMessage());
+			return status;
+		}
 	}
 	
 	@GetMapping(path = "/approve-bidding-request")
