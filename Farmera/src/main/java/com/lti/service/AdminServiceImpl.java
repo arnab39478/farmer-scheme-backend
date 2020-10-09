@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.lti.entity.Admin;
@@ -106,6 +107,14 @@ public class AdminServiceImpl implements AdminService {
 		sellRequest.setBiddingStatus('O');
 		sellRequest.setBiddingDeadline(biddingDeadline);
 		aRepo.save(sellRequest);
+		try {
+			BiddingRequest biddingRequest=aRepo.fetchWinningBid(sellRequestId);
+			biddingRequest.setFinalStatus('N');
+			aRepo.save(biddingRequest);
+		}
+		catch(EmptyResultDataAccessException e){
+			
+		}
 	}
 	
 	@Override
